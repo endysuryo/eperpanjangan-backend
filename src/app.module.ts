@@ -8,7 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import dotenv = require('dotenv');
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TimeoutInterceptor } from './timeout.interceptor';
-import { CatsModule } from './cats/cats.module';
+import { UserModule } from './user/user.module';
 
 const { parsed } = dotenv.config({
   path:
@@ -21,7 +21,7 @@ process.env = { ...process.env, ...parsed };
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/' + process.env.MONGODB_DATABASE),
-    CatsModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [
