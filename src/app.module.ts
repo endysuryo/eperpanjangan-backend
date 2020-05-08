@@ -9,6 +9,7 @@ import dotenv = require('dotenv');
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TimeoutInterceptor } from './timeout.interceptor';
 import { UserModule } from './user/user.module';
+import { PerpanjanganModule } from 'perpanjangan/perpanjangan.module';
 
 const { parsed } = dotenv.config({
   path:
@@ -22,6 +23,7 @@ process.env = { ...process.env, ...parsed };
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/' + process.env.MONGODB_DATABASE),
     UserModule,
+    PerpanjanganModule,
   ],
   controllers: [AppController],
   providers: [

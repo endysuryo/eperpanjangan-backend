@@ -8,6 +8,9 @@ export class UserDto {
   last_name: string;
 
   @ApiModelProperty()
+  phone: string;
+
+  @ApiModelProperty()
   email: string;
 
   @ApiModelProperty()
