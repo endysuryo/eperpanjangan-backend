@@ -4,7 +4,7 @@ export interface Perpanjangan extends Document {
   readonly jenis_angkutan: string;
   readonly nama_po: string;
   readonly tnkb: string;
-  readonly kb_lama: string;
+  readonly kp_lama: string;
   readonly jasa_raharja: string;
   readonly stnk: string;
   readonly surat_rekomendasi: string;

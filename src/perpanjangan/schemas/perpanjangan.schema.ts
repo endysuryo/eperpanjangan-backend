@@ -4,7 +4,7 @@ export const PerpanjanganSchema = new mongoose.Schema({
   jenis_angkutan: String,
   nama_po: String,
   tnkb: String,
-  kb_lama: String,
+  kp_lama: String,
   jasa_raharja: String,
   stnk: String,
   surat_rekomendasi: String,
