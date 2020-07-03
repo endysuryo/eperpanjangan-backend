@@ -1,8 +1,11 @@
-import { Controller, Get, Post, Delete, Body, Param, Patch } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Body, Param, Patch, UseInterceptors, UploadedFile, Res, UploadedFiles } from '@nestjs/common';
 import { PerpanjanganDto } from './dto/perpanjangan.dto';
 import { PerpanjanganService } from './perpanjangan.service';
 import { Perpanjangan } from './interfaces/perpanjangan.interface';
 import { ApiUseTags, ApiBearerAuth, ApiModelProperty, ApiOperation } from '@nestjs/swagger';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+import { imageFileFilter, editFileName } from 'utils/file-uploading.utils';
+import { diskStorage } from 'multer';
 
 @ApiUseTags('Perpanjangan')
 @Controller('perpanjangan')
@@ -37,5 +40,53 @@ export class PerpanjanganController {
   @Delete('/:id')
   async delete(@Param('id') id: string) {
     await this.service.delete(id);
+  }
+
+  @ApiOperation({ title: 'Upload Image' })
+  @Post('/upload')
+  @UseInterceptors(
+    FileInterceptor('image', {
+      storage: diskStorage({
+        destination: './files',
+        filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
+    }),
+    )
+  async uploadedFile(@UploadedFile() file: any) {
+    const response = {
+      originalname: file.originalname,
+      filename: file.filename,
+    };
+    return response;
+  }
+
+  @ApiOperation({ title: 'Upload Multiple Image' })
+  @Post('/upload/multiple')
+  @UseInterceptors(
+    FilesInterceptor('image', 20, {
+      storage: diskStorage({
+        destination: './files',
+        filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
+    }),
+  )
+  async uploadMultipleFiles(@UploadedFiles() files: any) {
+    const response = [];
+    files.forEach((file: { originalname: any; filename: any; }) => {
+      const fileReponse = {
+        originalname: file.originalname,
+        filename: file.filename,
+      };
+      response.push(fileReponse);
+    });
+    return response;
+  }
+
+  @ApiOperation({ title: 'Show Image' })
+  @Get('/image/:imgpath')
+  seeUploadedFile(@Param('imgpath') image: any, @Res() res: any) {
+    return res.sendFile(image, { root: './files' });
   }
 }
