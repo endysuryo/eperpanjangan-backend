@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 
 export const PerpanjanganSchema = new mongoose.Schema({
+  kode_perpanjangan: String,
   jenis_angkutan: String,
   nama_po: String,
   tnkb: String,
@@ -12,6 +13,7 @@ export const PerpanjanganSchema = new mongoose.Schema({
   biaya: String,
   denda: String,
   status: String,
+  keterangan: String,
   approve_at: String,
   admin_id: String,
   user_id: String,

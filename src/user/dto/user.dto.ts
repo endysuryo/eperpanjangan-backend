@@ -2,6 +2,9 @@ import { ApiModelProperty } from '@nestjs/swagger';
 
 export class UserDto {
   @ApiModelProperty()
+  kode_perpanjangan: string;
+
+  @ApiModelProperty()
   first_name: string;
 
   @ApiModelProperty()

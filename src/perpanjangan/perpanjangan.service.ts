@@ -12,8 +12,8 @@ async findAll(): Promise<Perpanjangan[]> {
     return this.perpanjanganModel.find().exec();
   }
 
-  async findId(id: string): Promise<Perpanjangan> {
-    return this.perpanjanganModel.findById(id).exec();
+  async findId(dto: string): Promise<Perpanjangan> {
+    return this.perpanjanganModel.findOne({ kode_perpanjangan: dto }).exec();
   }
 
   async create(dto: PerpanjanganDto): Promise<Perpanjangan> {

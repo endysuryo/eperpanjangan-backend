@@ -21,8 +21,8 @@ export class UserService {
     return this.userModel.find().exec();
   }
 
-  async findId(id: string): Promise<User> {
-    return this.userModel.findById(id).exec();
+  async findId(dto: string): Promise<User> {
+    return this.userModel.findOne({ kode_perpanjangan: dto }).exec();
   }
 
   async create(dto: UserDto): Promise<User> {

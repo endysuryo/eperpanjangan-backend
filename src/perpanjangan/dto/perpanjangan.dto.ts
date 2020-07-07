@@ -2,6 +2,9 @@ import { ApiModelProperty } from '@nestjs/swagger';
 
 export class PerpanjanganDto {
   @ApiModelProperty()
+  kode_perpanjangan: string;
+
+  @ApiModelProperty()
   jenis_angkutan: string;
 
   @ApiModelProperty()
@@ -36,6 +39,9 @@ export class PerpanjanganDto {
 
   @ApiModelProperty()
   status: string;
+
+  @ApiModelProperty()
+  keterangan: string;
 
   @ApiModelProperty()
   approve_at: string;

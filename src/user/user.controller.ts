@@ -21,10 +21,10 @@ export class UserController {
     return this.service.findAll();
   }
 
-  @ApiOperation({ title: 'Find Data By ID' })
-  @Get('/:id')
-  async findId(@Param('id') id: string): Promise<User> {
-    return this.service.findId(id);
+  @ApiOperation({ title: 'Find Data By Kode Pengajuan' })
+  @Get('/:kode_pengajuan')
+  async findId(@Param('kode_pengajuan') kode_pengajuan: string): Promise<User> {
+    return this.service.findId(kode_pengajuan);
   }
 
   @ApiOperation({ title: 'Save Data' })

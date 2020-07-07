@@ -1,6 +1,7 @@
 import { Document } from 'mongoose';
 
 export interface Perpanjangan extends Document {
+  readonly kode_perpanjangan: string;
   readonly jenis_angkutan: string;
   readonly nama_po: string;
   readonly tnkb: string;
@@ -12,6 +13,7 @@ export interface Perpanjangan extends Document {
   readonly biaya: string;
   readonly denda: string;
   readonly status: string;
+  readonly keterangan: string;
   readonly approve_at: string;
   readonly admin_id: string;
   readonly user_id: string;
