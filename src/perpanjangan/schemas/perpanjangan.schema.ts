@@ -14,8 +14,5 @@ export const PerpanjanganSchema = new mongoose.Schema({
   denda: String,
   status: String,
   keterangan: String,
-  approve_at: String,
-  admin_id: String,
-  user_id: String,
   created_at: String,
 });

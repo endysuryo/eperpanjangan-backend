@@ -44,14 +44,5 @@ export class PerpanjanganDto {
   keterangan: string;
 
   @ApiModelProperty()
-  approve_at: string;
-
-  @ApiModelProperty()
-  admin_id: string;
-
-  @ApiModelProperty()
-  user_id: string;
-
-  @ApiModelProperty()
   created_at: string;
 }

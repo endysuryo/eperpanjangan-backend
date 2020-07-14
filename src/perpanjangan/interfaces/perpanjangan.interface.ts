@@ -14,8 +14,5 @@ export interface Perpanjangan extends Document {
   readonly denda: string;
   readonly status: string;
   readonly keterangan: string;
-  readonly approve_at: string;
-  readonly admin_id: string;
-  readonly user_id: string;
   readonly created_at: string;
 }
